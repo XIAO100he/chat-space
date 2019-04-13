@@ -5,7 +5,7 @@
 |------|----|-------|
 |name|string|
 |email|text|null: false|unique: true|
-|passwords|text|null:false|unique: true|
+|passwords|string|null:false|unique: true|
 
 ### Association
 - has_many :groups, through: :user_groups
@@ -29,7 +29,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |text|text|
-|image|text|
+|image|string|
 |user_id|reference|null: false, foreign_key: true|
 |group_id|reference|null: false, foreign_key: true|
 
