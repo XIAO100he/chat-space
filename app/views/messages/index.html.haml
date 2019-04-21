@@ -1,44 +1,44 @@
-%body.chat-box
+.chat-box
 
- %div.flash-box
+ .flash-box
   %h1
   グループを作成しました
 
- %div.side-box
-  %div.side-header
+ .side-box
+  .side-header
    %p.side-header__user-name
     LOGIN-NAME
    %i.fa.fa-cog
    %i.fa.fa-edit
 
-  %div.side-groups
-   %div.side-group
+  .side-groups
+   .side-group
     %p.side-group__name Group-Name
     %p.side-group__message Message
 
 
- %div.main-box
-  %div.main-header
-   %div.current-group
+ .main-box
+  .main-header
+   .current-group
     %h2.current-group__name Group-Name
     %h3.member-list Member : name
-   %div.main-header__edit-btn
+   .main-header__edit-btn
     Edit
 
-  %div.main-messages
-   %div.main-message
-    %div.upper-info
+  .main-messages
+   .main-message
+    .upper-info
      %p.upper-info__user name
      %p.upper-info__date 2020/01/01(Sun) 15:00:00
     %p.message-text Hello
-   %div.main-message
-    %div.upper-info
+   .main-message
+    .upper-info
      %p.upper-info__user name2
      %p.upper-info__date 2020/01/01(Sun) 16:00:00
     %p.message-text Good Night
   
-  %div.form 
-   %div.input-box 
-    %div.input-message type a messegae
+  .form 
+   .input-box 
+    .input-message type a messegae
     %i.fa.fa-image
    %input{:type => "submit",:value => "Send"}
