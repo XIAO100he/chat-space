@@ -29,7 +29,7 @@
     height:100px;
     width:100%;
     
-    .side-header__user-name{
+    &__user-name{
     margin:0;
     padding-left:20px;
     font-weight:bold;
@@ -61,7 +61,7 @@
         margin-bottom:5px;
         font-weight:normal;
       }
-      .side-group__message{
+      &__message{
         font-size:11px;
         font-weight:normal;
         margin-bottom:40px;
@@ -87,7 +87,7 @@
      margin-top:35px;
      float:left;
     
-     .current-group__name{
+     &__name{
       font-size:100%;
       font-weight:normal;
      }
@@ -120,13 +120,13 @@
     
      .upper-info{
       margin-bottom:30px;
-      .upper-info__user{
+      &__user{
       color:#434a54;
       font-size:16px;
       font-weight:bold;
       float:left;
       }
-      .upper-info__date{
+      &__date{
       color:#999;
       font-size:12px;
       margin-left:10px;
@@ -180,6 +180,6 @@
      position:relative;
       top:20px;
       right:80px;
-   }
-   }
- }
+    }
+  }
+}
