@@ -12,10 +12,7 @@
    %i.fa.fa-edit
 
   .side-groups
-   .side-group
-    %p.side-group__name Group-Name
-    %p.side-group__message Message
-
+   = render partial: "group"
 
  .main-box
   .main-header
@@ -27,15 +24,11 @@
 
   .main-messages
    .main-message
-    .upper-info
-     %p.upper-info__user name
-     %p.upper-info__date 2020/01/01(Sun) 15:00:00
-    %p.message-text Hello
+    =render partial:"info"
+    =render partial:"message"
    .main-message
-    .upper-info
-     %p.upper-info__user name2
-     %p.upper-info__date 2020/01/01(Sun) 16:00:00
-    %p.message-text Good Night
+    =render partial:"info"
+    =render partial:"message"
   
   .form 
    .input-box 
