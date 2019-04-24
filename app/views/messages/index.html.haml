@@ -1,0 +1,38 @@
+.chat-box
+
+ .flash-box
+  %h1
+  グループを作成しました
+
+ .side-box
+  .side-header
+   %p.side-header__user-name
+    LOGIN-NAME
+   %i.fa.fa-cog
+   %i.fa.fa-edit
+
+  .side-groups
+   = render partial: "group"
+
+ .main-box
+  .main-header
+   .current-group
+    %h2.current-group__name Group-Name
+    %h3.member-list Member : name
+   .main-header__edit-btn
+    Edit
+
+  .main-messages
+   .main-message
+    =render partial:"info"
+    =render partial:"message"
+   .main-message
+    =render partial:"info"
+    =render partial:"message"
+  
+  .form 
+   .input-box 
+    .input-message type a messegae
+    %i.fa.fa-image
+   %input{type: "submit",value: "Send"}
+   
