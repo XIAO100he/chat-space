@@ -1,9 +1,3 @@
-@import "./reset";
-@import "./font-awesome";
-<<<<<<< HEAD
-
-$white-color:#fafafa;
-$skyblue-color:#38AEF0;
 
 .chat-box{
   background-color:$white-color;
@@ -35,7 +29,7 @@ $skyblue-color:#38AEF0;
     height:100px;
     width:100%;
     
-    .side-header__user-name{
+    &__user-name{
     margin:0;
     padding-left:20px;
     font-weight:bold;
@@ -62,12 +56,12 @@ $skyblue-color:#38AEF0;
 
    .side-group{
     color:#FFFFFF;
-      .side-group__name{
+      &__name{
         font-size:15px;
         margin-bottom:5px;
         font-weight:normal;
       }
-      .side-group__message{
+      &__message{
         font-size:11px;
         font-weight:normal;
         margin-bottom:40px;
@@ -93,7 +87,7 @@ $skyblue-color:#38AEF0;
      margin-top:35px;
      float:left;
     
-     .current-group__name{
+     &__name{
       font-size:100%;
       font-weight:normal;
      }
@@ -104,7 +98,7 @@ $skyblue-color:#38AEF0;
      }
     }
 
-   .main-header__edit-btn{
+   &__edit-btn{
      height:40px;
      line-height:40px;
      padding:0 20px;
@@ -126,13 +120,13 @@ $skyblue-color:#38AEF0;
     
      .upper-info{
       margin-bottom:30px;
-      .upper-info__user{
+      &__user{
       color:#434a54;
       font-size:16px;
       font-weight:bold;
       float:left;
       }
-      .upper-info__date{
+      &__date{
       color:#999;
       font-size:12px;
       margin-left:10px;
@@ -186,13 +180,6 @@ $skyblue-color:#38AEF0;
      position:relative;
       top:20px;
       right:80px;
-   }
-   }
- }
-
-
-
-=======
-@import "./variable";
-@import "./body";
->>>>>>> master
+    }
+  }
+}
