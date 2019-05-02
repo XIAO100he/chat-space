@@ -1,8 +1,25 @@
-.form
-  = form_for [@group, @message] do |f|
-    = f.text_field :content, class: 'form__message', placeholder: 'type a message'
-    .form__mask
-      = f.label :image, class: 'form__mask__image' do
-      = fa_icon 'picture-o', class: 'icon'
-      = f.file_field :image, class: 'hidden'
+.side-box
+  = render partial:"side_box"
+
+.main-box
+  .main-box__header
+    .current_group
+      .current_group__name
+        Group Name
+      .current_group__members
+        .menber
+          Member :Name
+    .edit-btn 
+      Edit
+
+  .messages
+    =render @messages
+
+  .form
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'form__message', placeholder: ' type a message'
+      .form__mask
+        = f.label :image, class: 'form__mask__image' do
+          = fa_icon 'picture-o', class: 'icon'
+        = f.file_field :image, class: 'hidden'
       = f.submit 'Send', class: 'form__submit'

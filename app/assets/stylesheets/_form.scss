@@ -1,0 +1,35 @@
+.form{
+  height:90px;
+  padding:20px 50px 20px 40px;
+  background-color:#ddd;
+  box-sizing:border-box;
+  &__message{
+    width:calc(100% - 150px);
+    height:50px;
+    border:none;
+    float:left;
+   }
+  &__mask {
+     background-color:$white-color;
+     float:left;
+     height:50px;
+     padding-right:10px;
+     &__image{
+       font-size:20px;
+       line-height: 50px;
+     }
+   .hidden{
+     display: none;
+   }
+  }
+  &__submit{
+    height:50px;
+    font-size:16px;
+    padding:0 30px;
+    margin-left:15px;
+    background-color:$light_blue;
+    color:$white-color;
+    float:right;
+    border:none;
+   }
+}

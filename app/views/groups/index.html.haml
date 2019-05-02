@@ -3,25 +3,3 @@
  .side-box
   = render partial:"side_box"
 
- .main-box
-  .main-header
-   .current-group
-    %h2.current-group__name Group-Name
-    %h3.member-list Member : name
-   .main-header__edit-btn 
-    Edit
-
-  .main-messages
-   .main-message
-    =render partial:"info"
-    =render partial:"message"
-   .main-message
-    =render partial:"info"
-    =render partial:"message"
-  
-  .form 
-   .input-box 
-    .input-message type a messegae
-    %i.fa.fa-image
-   %input{type: "submit",value: "Send"}
-   
