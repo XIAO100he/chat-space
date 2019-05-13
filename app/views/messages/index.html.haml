@@ -5,10 +5,10 @@
   .main-box__header
     .current_group
       .current_group__name
-        Group Name
+        = @group.name
       .current_group__members
         .menber
-          Member :Name
+        =  "Member :" 
     .edit-btn 
       Edit
 
@@ -16,10 +16,10 @@
     =render @messages
 
   .form
-    = form_for [@group, @message] do |f|
-      = f.text_field :content, class: 'form__message', placeholder: ' type a message'
+    = form_for [@group, @message], id: 'new_message'  do |f|
+      = f.text_field :content, id: 'form__message', class: 'form__message', placeholder: ' type a message'
       .form__mask
         = f.label :image, class: 'form__mask__image' do
           = fa_icon 'picture-o', class: 'icon'
         = f.file_field :image, class: 'hidden'
-      = f.submit 'Send', class: 'form__submit'
+      = f.submit 'Send', id: 'form__submit', class: 'form__submit'
