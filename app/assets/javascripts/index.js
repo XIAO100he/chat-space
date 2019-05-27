@@ -62,9 +62,3 @@ $(function(){
     $(this).parent().remove();
   })
 })
-
-
-  
-
-
-
