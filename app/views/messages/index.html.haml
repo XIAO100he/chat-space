@@ -6,9 +6,11 @@
     .current_group
       .current_group__name
         = @group.name
-      .current_group__members
-        .menber
-        =  "Member :" 
+      %ul.current_group__members
+        Member :
+        - @group.users.each do |user|
+          %li.member-list
+            = user.name
     .edit-btn
       = link_to 'Edit',edit_group_path(@group), class: 'edit-link'
 
