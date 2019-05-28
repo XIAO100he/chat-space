@@ -114,10 +114,16 @@
     color: #fff;
     background-color: #38aef0;
     border: 0;
+    text-decoration: none;
   }
 }
 
 .chat-user-list{
-  width:500px;
+  width:575px;
+  margin-left:280px;
+}
+
+.add_user_list{
+  width:575px;
   margin-left:280px;
 }
