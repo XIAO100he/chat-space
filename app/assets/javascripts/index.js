@@ -17,44 +17,50 @@ $(function(){
     user_list.append(html);
    }
 
-   function appendUserToView(user_name){
-    var html = `<div class="chat-group-user clearfix chat-user-list">
-                  <p class="chat-group-user__name">${user_name}</p>
-                  <div class="user-search-remove chat-group-user__btn chat-group-user__btn--remove"> 削除 </div>
+   function appendUserToView(user_id, name){
+    var html = `<div class="chat-group-user clearfix" data-user-id=${ user_id }>
+                  <input name="group[user_ids][]" type="hidden" value=${ user_id }>
+                  <p class="chat-group-user__name">${name}</p>
+                  <div class="user-search-remove chat-group-user__btn chat-group-user__btn--remove" data-user-id=${ user_id } data-user-name=${ name }> 削除 </div>
                </div>`
     adduser_list.append(html);
    }
 
   //ユーザー検索
   $('#user-search-field').on("keyup", function(){
+    var preWord = "";
     var input = $('#user-search-field').val();
-
-    $.ajax({
-      type: 'GET',
-      url: '/users/',
-      data: {keyword: input},
-      dataType: 'json'
-    })
-    .done(function(users){
-      $('#user-search-result').empty();
-      if (users.length !== 0) {
-        users.forEach(function(user){
-          appendUser(user);
-        });
-      }
-      else {
-        appendErrMsgToHTML("一致するユーザーはいません");
-      }
-    })
-    .fail(function(){
-      alert('ユーザー検索に失敗しました');
-    })
-  })
+    if (input !== preWord && input.length !== 0){
+      $.ajax({
+        type: 'GET',
+        url: '/users/',
+        data: {keyword: input},
+        dataType: 'json'
+      })
+      .done(function(users){
+        if (users.length !== 0 ) {
+          users.forEach(function(user){
+            appendUser(user);
+          });
+        }
+        else {
+          appendErrMsgToHTML("一致するユーザーはいません");
+        }
+      })
+      .fail(function(){
+        alert('ユーザー検索に失敗しました');
+      })
+    }
+    preWord = input;
+    $('#user-search-result').empty();
+  });
 
   //ユーザーの追加
   $('#user-search-result').on('click', '.user-search-add', function(){
-    var a_user = $(this).parent().find('.chat-group-user__name').text();
-    appendUserToView(a_user);
+    var user_id = $(this).attr("data-user-id");
+    var user_name = $(this).attr("data-user-name");
+    appendUserToView(user_id, user_name);
+    $(this).parent().remove();
   })
 
   //ユーザーの削除
