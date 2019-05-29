@@ -64,8 +64,10 @@ $(function(){
       processData: false,
       contentType: false
     })
+
     .done(function(messages) {
       var insertHTML = buildHTML(message);
+      console.log(insertHTML)
         messages.forEach(function(message){
           $('.messages').append(insertHTML);
           $('.messages').animate({ scrollTop:$('.messages:last')[0].scrollHeight})
