@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
 
   def index
+    @users = User.where('name LIKE ? AND id NOT LIKE ?', "%#{params[:keyword]}%", current_user).order('name ASC')
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
   
   def edit
