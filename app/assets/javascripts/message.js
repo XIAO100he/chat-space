@@ -72,7 +72,7 @@ $(function(){
         })
       })
     .fail(function() {
-      alert('error');
+      alert('メッセージをうまく取得できませんでした');
     });
   };
 })
