@@ -47,6 +47,11 @@ $(function(){
       $("#form__submit").removeAttr("disabled");
     })
   });
+
+  $(function(){
+    setInterval(reloadMessages, 5000)
+  });
+
   function reloadMessages() {
     last_message_id = $('.message').last().data('id')
     var api_url = window.location.pathname;
