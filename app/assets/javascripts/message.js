@@ -54,27 +54,25 @@ $(function(){
 
   function reloadMessages() {
     last_message_id = $('.message').last().data('id')
-    var api_url = window.location.pathname;
+    var group_id = $('.messages').data('id')
 
     $.ajax({
-      url: api_url,
+      url: '/groups/' + group_id + '/api/messages',
       type: 'get',
       dataType: 'json',
       data: {id: last_message_id},
       processData: false,
       contentType: false
     })
-
-    .done(function(messages) {
-      var insertHTML = buildHTML(message);
-      console.log(insertHTML)
-        messages.forEach(function(message){
-          $('.messages').append(insertHTML);
-          $('.messages').animate({ scrollTop:$('.messages:last')[0].scrollHeight})
+    .done(function(messages){
+      messages.forEach(function(message) {
+        var insertHTML = buildHTML(message);
+        $('.messages').append(insertHTML);
+        $('.messages').animate({ scrollTop:$('.messages:last')[0].scrollHeight});
         })
       })
     .fail(function() {
-      alert('メッセージをうまく取得できませんでした');
+      alert('最新メッセージの取得に失敗しました');
     });
   };
 })
