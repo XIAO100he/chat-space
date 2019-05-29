@@ -3,7 +3,7 @@ $(function(){
   function buildHTML(message){
     var img =  (message.image.url) !== null?  `<img src="${message.image.url}">` : "";
 
-    var html = `<div class="message">
+    var html = `<div class="message" data-id=${message.id}>
                   <div class="top-wrapper">
                     <div class="top-wrapper__user-name">${message.user_name} </div>
                     <div class="top-wrapper__date">${message.created_at}</div>
@@ -46,6 +46,28 @@ $(function(){
     .always(function(){
       $("#form__submit").removeAttr("disabled");
     })
-  })
-})
+  });
+  function reloadMessages() {
+    last_message_id = $('.message').last().data('id')
+    var api_url = window.location.pathname;
 
+    $.ajax({
+      url: api_url,
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id},
+      processData: false,
+      contentType: false
+    })
+    .done(function(messages) {
+      var insertHTML = buildHTML(message);
+        messages.forEach(function(message){
+          $('.messages').append(insertHTML);
+          $('.messages').animate({ scrollTop:$('.messages:last')[0].scrollHeight})
+        })
+      })
+    .fail(function() {
+      alert('error');
+    });
+  };
+})
