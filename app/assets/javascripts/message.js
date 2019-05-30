@@ -3,7 +3,7 @@ $(function(){
   function buildHTML(message){
     var img =  (message.image.url) !== null?  `<img src="${message.image.url}">` : "";
 
-    var html = `<div class="message">
+    var html = `<div class="message" data-id=${message.id}>
                   <div class="top-wrapper">
                     <div class="top-wrapper__user-name">${message.user_name} </div>
                     <div class="top-wrapper__date">${message.created_at}</div>
@@ -46,6 +46,33 @@ $(function(){
     .always(function(){
       $("#form__submit").removeAttr("disabled");
     })
-  })
-})
+  });
 
+  $(function(){
+    setInterval(reloadMessages, 5000)
+  });
+
+  function reloadMessages() {
+    last_message_id = $('.message').last().data('id')
+    var group_id = $('.messages').data('id')
+
+    $.ajax({
+      url: '/groups/' + group_id + '/api/messages',
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id},
+      processData: false,
+      contentType: false
+    })
+    .done(function(messages){
+      messages.forEach(function(message) {
+        var insertHTML = buildHTML(message);
+        $('.messages').append(insertHTML);
+        $('.messages').animate({ scrollTop:$('.messages:last')[0].scrollHeight});
+        })
+      })
+    .fail(function() {
+      alert('最新メッセージの取得に失敗しました');
+    });
+  };
+})

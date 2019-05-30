@@ -14,7 +14,7 @@
     .edit-btn
       = link_to 'Edit',edit_group_path(@group), class: 'edit-link'
 
-  .messages
+  .messages{data: {id: @group.id}}
     =render @messages
 
   .form
