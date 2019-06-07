@@ -3,10 +3,10 @@
     =current_user.name
   %ul.side-header__list
     %li.list
-      =link_to new_group_path do
+      = link_to edit_user_path(current_user) do
         =fa_icon 'cog', class: 'icon'
     %li.list
-      = link_to edit_user_path(current_user) do
+      =link_to new_group_path do
         = fa_icon 'edit', class: 'icon'
 
 .side-groups
