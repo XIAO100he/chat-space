@@ -47,27 +47,20 @@ $(function(){
       $("#form__submit").removeAttr("disabled");
     })
   });
-
-  $(function(){
-    $(function() {
-      if(location.href.match(/\/groups\/\d+\/messages/)){
-      setInterval(reloadMessages, 5000);
-      }
-    });
-
-    function reloadMessages() {
+   
+    var reloadMessages = function() {
       last_message_id = $('.message').last().data('id')
       var group_id = $('.messages').data('id')
 
       $.ajax({
-        url: '/groups/' + group_id + '/api/messages',
+        url: `/groups/${group_id}/api/messages`,
         type: 'get',
         dataType: 'json',
-        data: {id: last_message_id},
-        processData: false,
-        contentType: false
+        data: {id: last_message_id}
       })
+
       .done(function(messages){
+        console.log(messages);
         messages.forEach(function(message) {
           var insertHTML = buildHTML(message);
           $('.messages').append(insertHTML);
@@ -78,5 +71,10 @@ $(function(){
         alert('最新メッセージの取得に失敗しました');
       });
     };
-  })
+
+  $(function() {
+    if(location.href.match(/\/groups\/\d+\/messages/)){
+    setInterval(reloadMessages, 5000);
+    }
+  });
 })
